@@ -31,13 +31,34 @@ ul#navbar {
     font-weight: bold;
     position: fixed;
     list-style-type: none;
-    margin: 0;
+    margin: 0.25em;
     padding: 0;
+    width: calc(100% - 0.5em);
 
     li {
         float: left;
+        &.right {
+            float: right;
+        }
+
+        &.star {
+            position: relative;
+            margin-right: 1.5em;
+            &::after {
+                content: "";
+                display: block;
+                width: 1em;
+                height: 1em;
+                background: center / contain no-repeat url("/star.svg");
+                position: absolute;
+                top: calc(50% - 0.5em);
+                right: -1.25em;
+                pointer-events: none;
+            }
+        }
 
         a {
+            border-radius: 2em;
             display: block;
             color: black;
             @media (prefers-color-scheme: dark) {
@@ -46,12 +67,10 @@ ul#navbar {
             text-align: center;
             padding: 0.75em 1em;
             text-decoration: none;
+            transition: background-color 200ms ease-in;
 
             &:hover {
-                background-color: #ededed;
-                @media (prefers-color-scheme: dark) {
-                    background-color: #111111;
-                }
+                background-color: #726a50;
             }
         }
     }
