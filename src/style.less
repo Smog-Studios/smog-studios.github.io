@@ -50,6 +50,7 @@ section#hero {
     h1 {
         font-size: 5em;
         text-align: center;
+        mask: radial-gradient(rgba(1, 1, 1, 0.15));
     }
 }
 
@@ -69,16 +70,33 @@ ul#navbar {
         background-color: #1f201d;
     }
 
-    #logo {
-        width: 8em;
-        height: 8em;
+    li:has(#logo) {
         margin-top: 0.25em;
         position: absolute;
         left: calc(50% - 4em);
         border-radius: 0 0 4em 4em;
         padding-bottom: 0.25em;
+
+        &:hover #logo {
+            animation: spin 500ms ease-out forwards;
+        }
+    }
+
+    @keyframes spin {
+        from {
+            rotate: y 0deg;
+        }
+        to {
+            rotate: y 360deg;
+        }
+    }
+
+    #logo {
+        width: 8em;
+        height: 8em;
         background: center / contain no-repeat url("/logo.svg");
         background-position-y: top;
+
         @media (prefers-color-scheme: dark) {
             background-color: #1f201d;
         }
